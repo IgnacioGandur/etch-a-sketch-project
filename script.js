@@ -1,53 +1,26 @@
-// Linking DOM elements.
-const titleScreenContainer = document.querySelector('.title-screen-container');
-const title = document.querySelector('.welcome-title');
-let appContainer = document.querySelector('.app-container');
-let sketchScreen = document.querySelector('.sketch-screen');
-let singlePixel = document.getElementsByClassName('pixel');
+const container = document.querySelector('.container');
 
 
+const sizeOfTheGrid = 24;
 
-// Functions
-// Function that replaces screen of the beginning.
-function replaceTitleScreen() {
-    titleScreenContainer.replaceWith(appContainer);
-    titleScreenContainer.style.visibility = 'visible';
-    appContainer.style.display = 'flex';
-}
-setTimeout(replaceTitleScreen, 3200);
-
-// Functioning of the app
-// Function that creates the grid of 16*16.
-function createGridOfPixels16() {
-    let pixelsToAdd16 = '';
-    let numberOfPixels = 256;
-
-    for(let i = 0; i < numberOfPixels; i++) {
-        pixelsToAdd16 += '<div class="pixel"></div>';
-    }   
-    sketchScreen.innerHTML = pixelsToAdd16;
-} createGridOfPixels16();
-
-// Function that creates the grid of 32*32.
-function createGridOfPixels32() {
-    let pixelsToAdd32 = ''; 
-    let numberOfPixels = 1055
-    for(let i = 0; i < numberOfPixels; i++) {
-        pixelsToAdd32 += "<div class='pixel32'></div>";
+function createGrid(sizeOfTheGrid) {
+    for(let i = 0; i < sizeOfTheGrid; i++){
+        let row = document.createElement('div');
+        row.classList.add('grid-row');
+        
+        for(let j = 0; j < sizeOfTheGrid; j++){
+            let widthAndHeight = 650 / sizeOfTheGrid;
+            let gridCube = document.createElement('div');
+            gridCube.classList.add('grid-cube');
+            gridCube.style.width = `${widthAndHeight}px`;
+            gridCube.style.height = `${widthAndHeight}px`;
+            gridCube.addEventListener('mouseenter', () => {
+                gridCube.style.backgroundColor = 'black';
+            })
+            row.appendChild(gridCube);
+        }
+        container.appendChild(row);
     }
-    sketchScreen.innerHTML = '';
-    sketchScreen.innerHTML = pixelsToAdd32;
-} 
+}
 
-
-/*create a loop that creates certain amount of divs to fill
-the screen "container"
-
-256 div blocks to represent pixels, each of 37 pixels.
-
-
-Create an animation coming from the top of the top of the screen
-with the app that has written "draw something cool" in the screen
-that vanishes when the mouse enters the "sketchScreen".
-
-*/
+createGrid(sizeOfTheGrid)
