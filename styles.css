@@ -1,0 +1,150 @@
+:root {
+
+    --main-font: 'Satisfy', cursive;
+    --secondary-font: 'Poiret One', cursive;
+    --glowing-color: #E9007F;
+    --background-color : #191825;
+    --bezier-value: cubic-bezier(0.45, 0.05, 0.55,0.95);
+}
+* {
+    border: 2px solid white;
+    padding: 0;
+    margin: 0;
+}
+body {
+    background-color: var(--background-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.title-screen-container {
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.welcome-title {
+    font-family: var(--main-font);
+    font-size: 6rem;
+    text-align: center;
+    color: #eeeeee;
+    animation: 
+        appearTitle 750ms var(--bezier-value), 
+        glowingOutline 2000ms var(--bezier-value) 750ms,
+        disappear 500ms var(--bezier-value) 2750ms;
+}
+
+.app-container {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: 800px;
+    height: 800px;
+
+}
+
+.frame {
+    background-color: red;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 2%;
+
+}
+
+.frame-paragraphs-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.frame-paragraph-1, .frame-paragraph-2, .frame-paragraph-3 {
+    color: white;
+    font-family:var(--main-font);
+    font-size: 1.6rem;
+    text-shadow: -2px 2px #000;
+}
+.sketch-screen {
+    padding: 3px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    margin: 0 auto;
+    width: 600px;
+    height: 600px;
+    border-radius: 2%;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+.buttons-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.button {
+
+  height: 60px;
+  width: 60px;  
+  font-size: 1em;
+  font-family: var(--secondary-font);
+  border-radius: 50%;
+  background-color: #F1F6F9;
+  color: black;
+  text-align: center;
+  cursor: pointer;
+}
+.pixel {
+    width: 37px;
+    height: 37px;
+    border: 0px;
+    background-color: white;
+}
+.pixel:hover{
+    background-color: black;
+}
+
+.pixel32 {
+    width: 18px;
+    height: 18px;
+    border: 0px;
+    background-color: white;
+}
+.pixel32:hover {
+    background-color: black;
+}
+
+.painted-pixel {
+    background-color: black;
+}
+
+
+/* Key frames section */
+/* ================================== */
+@keyframes appearTitle {
+    0%{scale: 4.5; opacity: 0.01;}
+    60%{scale: .80;}
+    80%{scale: 1.2;}
+    100%{scale: 1; opacity: 1;}
+}
+@keyframes glowingOutline {
+    0%{text-shadow: 0px 0px 0px var(--glowing-color) ;}
+    50%{text-shadow: 0px 0px 50px var(--glowing-color), 0px 0px 50px var(--glowing-color), 0px 0px 50px var(--glowing-color);}
+    100%{text-shadow: 0px 0px 0px var(--glowing-color) ;}
+
+}
+
+@keyframes disappear {
+    0%{opacity: 1;}
+    100%{opacity: 0;}
+}
