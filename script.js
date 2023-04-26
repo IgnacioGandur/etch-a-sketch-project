@@ -14,6 +14,7 @@ function createGrid(sizeOfTheGrid) {
             gridCube.classList.add('grid-cube');
             gridCube.style.width = `${widthAndHeight}px`;
             gridCube.style.height = `${widthAndHeight}px`;
+            // Function that changes the color of the cube when hover over.
             gridCube.addEventListener('mouseenter', () => {
                 gridCube.style.backgroundColor = 'black';
             })
