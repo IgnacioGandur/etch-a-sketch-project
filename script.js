@@ -1,26 +1,26 @@
-// Linking elements to variables.
+//                              Linking elements to variables.
 const container = document.querySelector('.container');
-const chooseSizeButton = document.querySelector('.choose-size-button');
-const shakeScreenButton = document.querySelector('.shake-screen-button');
-const gridSquaresArray = document.getElementsByClassName('grid-cube');
-// Adding event listeners to elements.
+const changeGridSizeButton = document.querySelector('.change-grid-size-button');
+const clearGridButton = document.querySelector('.clear-grid-button');
+const gridCubesArray = document.getElementsByClassName('grid-cube');
 
-chooseSizeButton.addEventListener('click', ()=> {
+//                              Adding event listeners to elements.
+// Prompts the user for the grid size.
+changeGridSizeButton.addEventListener('click', ()=> {
     sizeOfTheGrid = askForGridSize();
     container.innerHTML = '';
     createGrid(sizeOfTheGrid);
 });
 
-shakeScreenButton.addEventListener('click', () => {
-    Array.from(gridSquaresArray).forEach(cube => {
-        cube.style.backgroundColor = 'white';
-    })
-})
+clearGridButton.addEventListener('click', clearGrid );
 
-// Creating functions.
+//                                      Global variables
 
+// Default grid size
 let sizeOfTheGrid = 16;
 
+
+//                                      Creating functions.
 // Function that creates the grid.
 
 function createGrid(sizeOfTheGrid) {
@@ -47,14 +47,25 @@ function createGrid(sizeOfTheGrid) {
 // Function that asks for the grid size when the buttons is pressed.
 function askForGridSize() {
     let userAnswer = prompt('How big would you like the grid to be?');
-    if (userAnswer > 100) {
-        alert('The number can\'t be greater than 100.');
+    let emptyString = '';
+    if (userAnswer > 100 || userAnswer === 0 || userAnswer < 0) {
+        alert('The number can\'t be greater than 100 or equal or lower than 0.');
         return userAnswer = 16;
     } else if (isNaN(userAnswer)) {
-        alert('Not a valid value, use numbers.');
+        alert('Not a valid value, use only numbers.');
         return userAnswer = 16;
-    }
-     else { 
+    } else if (userAnswer === null) {
+        return userAnswer = 16;
+    } else if (userAnswer === emptyString) {
+        return userAnswer = 16;
+    } else { 
         return userAnswer;
     }
 }
+// Function that clears the grid resetting the background color back to white.
+function clearGrid() {
+    Array.from(gridCubesArray).forEach(cube => {
+        cube.style.backgroundColor = 'white';
+    })
+}
+
