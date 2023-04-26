@@ -3,6 +3,9 @@ const container = document.querySelector('.container');
 const changeGridSizeButton = document.querySelector('.change-grid-size-button');
 const clearGridButton = document.querySelector('.clear-grid-button');
 const gridCubesArray = document.getElementsByClassName('grid-cube');
+const rgbColorButton = document.querySelector('.rgb-color-button');
+const blackColorButton = document.querySelector('.black-color-button');
+
 
 //                              Adding event listeners to elements.
 // Prompts the user for the grid size.
@@ -14,8 +17,8 @@ changeGridSizeButton.addEventListener('click', ()=> {
 
 clearGridButton.addEventListener('click', clearGrid );
 
-//                                      Global variables
 
+//                                      Global variables
 // Default grid size
 let sizeOfTheGrid = 16;
 
@@ -34,9 +37,23 @@ function createGrid(sizeOfTheGrid) {
             gridCube.classList.add('grid-cube');
             gridCube.style.width = `${widthAndHeight}px`;
             gridCube.style.height = `${widthAndHeight}px`;
-            // Function that changes the color of the cube when hover over.
-            gridCube.addEventListener('mouseenter', () => {
+            // Functions that changes the color of the cube when hover over.
+            const paintCubesBlack = () => {
                 gridCube.style.backgroundColor = 'black';
+            }
+            const paintCubesRGB = () => {
+                let randomNumber1 = Math.floor(Math.random() * 255);
+                let randomNumber2 = Math.floor(Math.random() * 255);
+                let randomNumber3 = Math.floor(Math.random() * 255);
+                gridCube.style.backgroundColor = `rgb(${randomNumber1}, ${randomNumber2}, ${randomNumber3})`;
+            }
+            gridCube.addEventListener('mouseenter', paintCubesBlack)
+            rgbColorButton.addEventListener('click', () => {
+                gridCube.addEventListener('mouseenter', paintCubesRGB);
+            })
+            blackColorButton.addEventListener('click', () => {
+                gridCube.addEventListener('mouseenter', paintCubesBlack);
+                gridCube.removeEventListener('mouseenter', paintCubesRGB);
             })
             row.appendChild(gridCube);
         }
