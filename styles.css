@@ -1,21 +1,187 @@
 :root {
-    --main-font: 'Satisfy', cursive;
-    --secondary-font: 'Poiret One', cursive;
-    --glowing-color: #E9007F;
-    --background-color : #191825;
-    --bezier-value: cubic-bezier(0.45, 0.05, 0.55,0.95);
+    --main-font:  'Carattere', cursive;
+    --secondary-font: 'Indie Flower', cursive;
+    --third-font: 'VT323', monospace; 
+    --fourth-font: 'Josefin Slab', serif;
+    --color-gold: #ffb703;
+    --text-shadow: #99582a;
 }
-.container {
+body{
+    background-image:linear-gradient(#00000011, #00000011), url(images/wood.jpeg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-blend-mode: darken;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    flex-wrap: wrap;
+    height: 100vh;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
+.app-container {
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 850px;
+    height: 850px;
+    background-color: #dd000f;
+    box-shadow: 0px 2px 5px 1px white inset, rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;;
+}
+
+.paragraphs-container {
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.etch-a-sketch {
+    box-sizing: border-box;
+    padding-top: 5px;
+    font-size: 3rem;
+    font-weight: 900;
+    font-family: var(--main-font);
+    color: var(--color-gold);
+    text-shadow: -2px 2px var(--text-shadow);
+    
+
+}
+
+.fa-brands {
+    color: var(--color-gold);
+    font-size: 4rem;
+    text-shadow: -2px 2px var(--text-shadow);
+    position: relative;
+    top: 10px;    
+    transition: scale 100ms ease-in-out;
+}
+.fa-brands:hover {
+    scale: 1.40;
+}
+
+.screen-container {
     width: 650px;
     height: 650px;
     box-sizing: border-box;
-    background-color: red;    
+    background-color: black; 
 }
+
+.screen-title {
+    padding: 0px;
+    margin: 0px;
+    color: white;
+    font-family: var(--third-font);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);  
+    text-shadow: 3px 3px black, -3px -3px black, 3px -3px black, -3px 3px black;
+    text-align: center;
+    font-size: 7.5em;
+    animation: disappear 1500ms ease-out 600ms;
+}
+
 .grid-row {
     display: flex;
 }
 .grid-cube {
     box-sizing: border-box;
     border: 1px solid black;
-    background-color: white;
+    background-color: #D8D8D8;
+}
+
+.buttons-container {
+    width: 98%;
+    display: flex;
+    justify-content: space-between;
+}
+
+button {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    font-family: var(--fourth-font);
+    font-size: 1.2rem;
+    font-weight: 900;
+    transition: scale 100ms ease-in-out;
+}
+
+button:hover {
+    scale: 1.40;
+}
+
+button:active {
+    scale: .75;
+}
+
+footer{
+    color: white;
+    margin: 25px;
+    width: 100%;
+    text-align: center;
+    font-family: var(--fourth-font);
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+/* ================= KEYFRAMES SECTION ================= */
+
+@keyframes appear {
+    0%{
+        translate: 0 -100vh;
+    }
+    80% {
+        translate: 0 5vh;
+    }
+    90% {
+        translate: 0 -5vh;
+    }
+    100%{
+        translate: initial;
+    }
+}
+
+.appear {
+    animation: appear 600ms cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+@keyframes disappear {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes shakeAnimation {
+    0% {
+        rotate: 0;
+    }
+    33% {
+        rotate: -15deg;
+    }
+    66% {
+        rotate: 15deg;
+    }
+    100% {
+        rotate: 0;
+    }
+}
+
+.shake-animation {
+    animation: shakeAnimation 350ms ease-out;
 }

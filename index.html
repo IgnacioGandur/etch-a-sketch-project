@@ -6,17 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Etch a Sketch!</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Carattere&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=VT323&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Satisfy&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@1,100;1,400;1,700&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Satisfy&display=swap" rel="stylesheet">
     <script src="script.js" defer ></script>
     <script src="https://kit.fontawesome.com/64a715bddf.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div><button class="change-grid-size-button">Change the grid size</button></div>
-    <div class="container"></div>
-    <div><button class="clear-grid-button">Shake the screen</button></div> <!--Button that clears the grid-->
-    <div><button class="rgb-color-button">Random RGB color</button></div>
-    <div><button class="black-color-button">Black color</button></div>
+    <div class="app-container appear">
+        <div class="paragraphs-container">
+            <p class="etch-a-sketch">Etch-a-Sketch!</p>
+        </div>
+        <div class="screen-container">
+            <h1 class="screen-title">Draw<br>something<br>cool!</h1>
+        </div>
+        <div class="buttons-container">
+            <button class="change-grid-size-button">Size</button>
+            <button class="clear-grid-button">Clear</button> <!--Button that clears the grid-->
+            <a href="https://github.com/IgnacioGandur/etch-a-sketch-project" target="_blank"><i class="fa-brands fa-github-alt"></i></a>
+            <button class="rgb-color-button">RGB</button>
+            <button class="black-color-button">Black</button>
+        </div>
+    </div>
+    <footer class="footer">Created for The Odin Project course. Author: Ignacio Gandur.</footer>
+    <audio id="scratch-sfx" src="sounds/sfx/scratch-sfx.mp3"></audio>
+    <audio id="click-sfx" src="sounds/sfx/click-sfx.mp3"></audio>
 </body>
 </html>
